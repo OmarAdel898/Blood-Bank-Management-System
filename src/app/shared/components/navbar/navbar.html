@@ -1,0 +1,61 @@
+<nav class="bg-transparent overflow-hidden p-1 w-full absolute left-0 top-0 z-50 border-y-1 border-gray-500">
+	<div class="container me-auto px-3 flex justify-between items-center">
+
+		<!-- Logo -->
+		<div class="flex items-center space-x-2">
+			<img src="images/bloodlinklogo.png" alt="BloodLink Logo" class="[transform:scale(0.7)]" />
+		</div>
+
+		<div class="hidden md:flex items-center space-x-8">
+			@for (link of links; track link.route) {
+			<a routerLink="{{link.route}}" routerLinkActive="text-red-500"
+				class="text-white hover:text-red-500  text-[1.125rem] transition duration-300">
+				{{link.text}}
+			</a>
+			}
+		</div>
+
+		<button
+			class="hidden md:flex bg-red-700 hover:bg-red-800 text-white font-semibold py-3 px-8 text-[1.125rem] rounded shadow-lg transition duration-300">
+			Login
+		</button>
+
+
+		<div class="md:hidden">
+			<button class="text-white focus:outline-none" (click)="toggleMenu()">
+				<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+					@if (!isMobileMenuOpen()) {
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+					} @else {
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+					}
+				</svg>
+			</button>
+		</div>
+	</div>
+	<!-- Mobile Menu -->
+	@if (isMobileMenuOpen()) {
+	<div
+		class="md:hidden bg-gray-900 bg-opacity-90 mt-4 py-2 space-y-2 rounded-lg shadow-xl overflow-hidden transition-all duration-400 ease-in-out"
+		[class.max-h-0]="!isMobileMenuOpen()" [class.max-h-[500px]]="isMobileMenuOpen()">
+
+		@for (link of links; track link.route) {
+		<a routerLink="{{link.route}}" routerLinkActive="text-red-500"
+			class="block text-white hover:bg-red-700 px-4 py-3 rounded transition duration-300">
+
+			{{link.text}}
+
+		</a>
+		}
+
+		<!-- Mobile Login Button -->
+		<button class="w-full bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-4 rounded-b-lg mt-2 transition">
+			Login
+		</button>
+	</div>
+	}
+</nav>
+
+<section class="relative h-[125vh] bg-cover bg-center bg-[url('/images/donor-2.png')]">
+	<div class="absolute inset-0 bg-black opacity-70"></div>
+</section>
