@@ -1,29 +1,57 @@
-<nav class="bg-transparent overflow-hidden p-1 w-full absolute left-0 top-0 z-50 border-y-1 border-gray-500">
-	<div class="container me-auto px-3 flex justify-between items-center">
+<nav class="bg-[#1d1d1de0]  p-1 w-full absolute left-0 top-0 z-50 border-y-1 border-gray-500">
+	<div class="container  px-4 flex justify-between items-center">
+		<!-- <div class="w-full flex justify-between items-center mx-auto"> -->
 
 		<!-- Logo -->
 		<div class="flex items-center space-x-2">
 			<img src="images/bloodlinklogo.png" alt="BloodLink Logo" class="[transform:scale(0.7)]" />
 		</div>
 
-		<div class="hidden md:flex items-center space-x-8">
+		<div class="hidden text-white md:flex items-center space-x-8 z-500">
 			@for (link of links; track link.route) {
-			<a routerLink="{{link.route}}" routerLinkActive="text-red-500"
-				class="text-white hover:text-red-500  text-[1.125rem] transition duration-300">
+
+			@if (!link.subLinks) {
+			<a [routerLink]="link.route" [class.text-primary]="rla.isActive" [class.font-semibold]="rla.isActive"
+				routerLinkActive #rla="routerLinkActive" [routerLinkActiveOptions]="{ exact: true }"
+				class=" hover:text-red-500 text-[1.125rem] transition duration-300">
 				{{link.text}}
 			</a>
 			}
-		</div>
 
+			@else {
+			<div class="relative">
+				<button (click)="toggleRegisterDropdown()"
+					class="text-white hover:text-red-500 text-[1.125rem] transition duration-300 flex items-center">
+					{{link.text}}
+					<svg class="ml-1 w-4 h-4 transition-transform duration-300" [class.rotate-180]="isRegisterDropdownOpen()"
+						fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+					</svg>
+				</button>
+
+				@if (isRegisterDropdownOpen()) {
+				<div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+					@for (subLink of link.subLinks; track subLink.route) {
+					<a [routerLink]="subLink.route" (click)="toggleRegisterDropdown()" routerLinkActive="bg-red-100 text-red-700"
+						class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-500">
+						{{subLink.text}}
+					</a>
+					}
+				</div>
+				}
+			</div>
+			}
+			}
+		</div>
 		<button
-			class="hidden md:flex bg-red-700 hover:bg-red-800 text-white font-semibold py-3 px-8 text-[1.125rem] rounded shadow-lg transition duration-300">
+			class="hidden md:flex md:ml-10 bg-primary hover:bg-red-800 text-white font-semibold py-3 px-8 text-[1.125rem] rounded shadow-lg transition duration-300">
 			Login
 		</button>
 
 
 		<div class="md:hidden">
 			<button class="text-white focus:outline-none" (click)="toggleMenu()">
-				<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+				<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 					@if (!isMobileMenuOpen()) {
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
 					} @else {
@@ -33,25 +61,79 @@
 			</button>
 		</div>
 	</div>
+
+
 	<!-- Mobile Menu -->
 	@if (isMobileMenuOpen()) {
+
 	<div
-		class="md:hidden bg-gray-900 bg-opacity-90 mt-4 py-2 space-y-2 rounded-lg shadow-xl overflow-hidden transition-all duration-400 ease-in-out"
+		class="md:hidden bg-[#1d1d1d] border-t-1 border-white mt-4 py-2 space-y-2 rounded-lg shadow-xl overflow-hidden transition-all duration-400 ease-in-out"
 		[class.max-h-0]="!isMobileMenuOpen()" [class.max-h-[500px]]="isMobileMenuOpen()">
 
 		@for (link of links; track link.route) {
-		<a routerLink="{{link.route}}" routerLinkActive="text-red-500"
-			class="block text-white hover:bg-red-700 px-4 py-3 rounded transition duration-300">
 
+		@if (!link.subLinks) {
+		<a [routerLink]="link.route" (click)="toggleMenu()" routerLinkActive="text-red-500"
+			class="block text-white hover:text-red-500 px-4 py-3 rounded transition duration-300">
 			{{link.text}}
-
 		</a>
 		}
 
+		@else {
+
+		<div class="block px-4 py-1">
+
+			<button (click)="toggleRegisterDropdown()"
+				class="w-full text-left text-white hover:text-red-500 py-2 flex items-center justify-between transition duration-300">
+
+				{{link.text}}
+
+				<svg class="ml-1 w-4 h-4 transition-transform duration-300" [class.rotate-180]="isRegisterDropdownOpen()"
+					fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+
+				</svg>
+
+			</button>
+
+
+
+			@if (isRegisterDropdownOpen()) {
+
+			<div class="mt-2 pl-4 border-l border-red-500 space-y-1">
+
+				@for (subLink of link.subLinks; track subLink.route) {
+
+				<a [routerLink]="subLink.route" (click)="toggleRegisterDropdown(); toggleMenu()"
+					routerLinkActive="bg-red-100 text-red-700"
+					class="block px-4 py-2 text-sm text-gray-700 bg-white rounded hover:bg-red-50 hover:text-red-500 transition duration-300">
+
+					{{subLink.text}}
+
+				</a>
+
+				}
+
+			</div>
+
+			}
+
+		</div>
+
+		}
+
+		}
+
 		<!-- Mobile Login Button -->
-		<button class="w-full bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-4 rounded-b-lg mt-2 transition">
+
+		<button class="w-full bg-[#B71B1C] hover:bg-primary text-white font-bold py-3 px-4 rounded-b-lg mt-2 transition">
+
 			Login
+
 		</button>
+
 	</div>
+
 	}
 </nav>

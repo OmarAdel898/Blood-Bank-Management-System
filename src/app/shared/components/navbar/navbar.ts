@@ -1,45 +1,42 @@
 import { Component, ElementRef, signal, effect } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, RouterLink, RouterLinkActive],
   templateUrl: './navbar.html',
-  styleUrl: './navbar.css',
+  styleUrls: ['./navbar.css'],
 })
 export class Navbar {
   isMobileMenuOpen = signal(false);
+  isRegisterDropdownOpen = signal(false);
 
   links = [
     { text: 'Home', route: '/' },
-    { text: 'Donate Now', route: '/donate' },
-    { text: 'Blood Bank', route: '/blood-bank' },
     { text: 'About', route: '/about' },
+    { text: 'Find Blood', route: '/find-blood' },
+    {
+      text: 'Register now',
+      dropdown: true,
+      subLinks: [
+        { text: 'As Donor', route: 'register-donor' },
+        { text: 'As Organization', route: 'register-organization' },
+      ],
+    },
   ];
-  constructor(private elRef: ElementRef) {
-    // إغلاق المينو عند الضغط خارج الـ navbar
-    effect(() => {
-      let handleClickOutside: (event: MouseEvent) => void;
+  constructor(private router: Router) {}
 
-      if (this.isMobileMenuOpen()) {
-        handleClickOutside = (event: MouseEvent) => {
-          if (!this.elRef.nativeElement.contains(event.target)) {
-            this.isMobileMenuOpen.set(false);
-          }
-        };
-        document.addEventListener('click', handleClickOutside);
-      }
-
-      // Return cleanup function always
-      return () => {
-        if (handleClickOutside) {
-          document.removeEventListener('click', handleClickOutside);
-        }
-      };
-    });
+  getCurrentRoute(): string {
+    return this.router.url;
   }
 
+  toggleRegisterDropdown() {
+    this.isRegisterDropdownOpen.update((v) => !v);
+  }
+  isRegisterDropdownOpenFn() {
+    return this.isRegisterDropdownOpen();
+  }
   toggleMenu() {
     this.isMobileMenuOpen.update((v) => !v);
   }

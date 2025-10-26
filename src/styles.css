@@ -1,1 +1,38 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+@theme {
+  --color-primary: rgba(183, 27, 28, 1);
+  --color-black-bg: rgba(29, 29, 29, 1);
+  --color-gray-bg: rgba(249, 249, 249, 1);
+  --font-raleway: 'Raleway', system-ui, sans-serif;
+  --font-noto: 'Noto Sans', sans-serif;
+}
+@layer base {
+  body,
+  html {
+    @apply font-raleway;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: theme('colors.gray.400');
+  }
+  label {
+    @apply text-base font-medium text-gray-700;
+  }
+  select {
+    @apply block w-full p-2 border border-gray-300 rounded-lg bg-gray-50 
+           text-gray-600 focus:ring-red-500 focus:border-red-500;
+  }
+}
+
+@layer components {
+  .tailwind-input {
+    @apply block w-full p-2 border border-gray-300 rounded-lg 
+           bg-gray-50 focus:ring-red-500 focus:border-red-500;
+  }
+  .form-gradient {
+    @apply bg-gradient-to-r from-red-800 to-red-600;
+  }
+}
