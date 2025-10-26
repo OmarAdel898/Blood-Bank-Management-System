@@ -9,7 +9,10 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./what-we-do.css'],
 })
 export class whatWeDo {
+  //union type
   activeTab: 'bloodDonation' | 'bloodBank' | 'healthCheck' = 'bloodDonation';
+
+  //object
   bloodDonationContent = {
     title: 'Blood Donation: The Gift of Life',
     body: "In less than an hour, your simple act of donation provides a vital second chance for trauma patients, surgical recipients, and those in critical care. It's the most profound gift you can offer, giving you the deep satisfaction of strengthening your entire community's resilience.",
@@ -43,7 +46,9 @@ export class whatWeDo {
     ],
   };
 
+  //function
   setActiveTab(tab: 'bloodDonation' | 'bloodBank' | 'healthCheck'): void {
+    //The active tab has changed — update the interface (UI)
     this.activeTab = tab;
   }
 }

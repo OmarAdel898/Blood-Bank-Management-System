@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
 import { Home } from './features/home/home';
-export const routes: Routes = [
+import { RegisterDonor } from './features/register-donor/register-donor';
 
-      { path: '', component: Home },
+export const routes: Routes = [
+  { path: '', component: Home },
+  { path: 'register-donor', component: RegisterDonor },
 ];
