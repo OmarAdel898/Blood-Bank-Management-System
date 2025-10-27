@@ -21,7 +21,7 @@ export class Navbar {
       dropdown: true,
       subLinks: [
         { text: 'As Donor', route: 'register-donor' },
-        { text: 'As Organization', route: 'register-organization' },
+        { text: 'As Organization', route: 'register-org' },
       ],
     },
   ];

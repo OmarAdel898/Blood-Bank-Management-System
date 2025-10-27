@@ -1,0 +1,54 @@
+<div class="flex justify-center min-h-screen mt-[98px] bg-gray-bg  py-10">
+	<div class="w-full max-w-4xl bg-white shadow-xl rounded-lg overflow-hidden">
+
+		<div class="p-6 text-white form-gradient">
+			<h2 class="text-2xl font-semibold">Register As Organization</h2>
+		</div>
+		<!-- <form [formGroup]="orgForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-10 p-10">
+			<div>
+				<label for="orgName" class="pr-5">Organization Name</label>
+				<input id="orgName" type="text" name="orgName" placeholder="Name" class="tailwind-input md:w-[400px]" />
+			</div>
+
+			<div class="">
+				<label for="address">Address</label>
+				<textarea formControlName="address" placeholder="Type Here" rows="4"
+					class="tailwind-input mt-1 resize-none mb-5 sm:mb-0"></textarea>
+			</div>
+		</form> -->
+		<form [formGroup]="orgForm" (ngSubmit)="onSubmit()" class="p-10">
+
+			<div class="grid grid-cols-4 sm:gap-y-6 gap-y-3  items-center">
+
+				<label for="orgName" class="  col-span-4 sm:col-span-1 md:text-[1.1rem]">Organization Name</label>
+				<input type="text" formControlName="orgName" placeholder="Name" class="col-span-4 md:col-span-2 tailwind-input">
+				<div class="col-span-4 md:col-span-1"></div>
+
+				<label for="address" class=" col-span-4 sm:col-span-1 row-span-2 md:text-[1.125rem]">Address</label>
+				<textarea formControlName="address" placeholder="Type Here" rows="4"
+					class="tailwind-input mt-1 col-span-4 md:col-span-2 row-span-2 resize-none mb-5 sm:mb-0"></textarea>
+				<div class="col-span-4 sd:col-span-1"></div>
+
+				<label for="headName" class=" col-span-4 sm:col-span-1 md:text-[1.125rem]">Head of Organization</label>
+				<input type="text" formControlName="headName" placeholder="Name"
+					class="col-span-4 md:col-span-2 tailwind-input">
+				<div class="col-span-4 md:col-span-1"></div>
+
+				<label for="phoneNumber" class="col-span-4 sm:col-span-1 md:text-[1.1rem]">Phone Number</label>
+				<input type="text" formControlName="phoneNumber" placeholder="Number"
+					class="col-span-4 md:col-span-2 tailwind-input mb-5 sm:mb-0">
+				<div class="col-span-4 md:col-span-1"></div>
+
+				<div class="flex justify-end col-span-4 mt-6">
+					<button type="submit" [disabled]="orgForm.invalid"
+						class="px-6 py-2 text-lg font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 disabled:opacity-50 transition duration-150 flex items-center">
+						Submit
+						<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+						</svg>
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
