@@ -15,13 +15,47 @@
 				<input type="text" formControlName="lastName" placeholder="Last Name"
 					class="col-span-5 tailwind-input sm:col-span-2 mb-5 sm:mb-0">
 
+				<label for="password" class=" col-span-5 sm:col-span-1 md:text-[1.1rem]">Password</label>
+				<input id="password" type="password" formControlName="password" placeholder="Password"
+					class="col-span-5 md:col-span-2 tailwind-input">
+				<div class="col-span-5 md:col-span-2 px-3">
+					@if (donorForm.get('password'); as passCtrl) {
+					@if (passCtrl.touched && passCtrl.hasError('required')) {
+					<p class="text-red-500 text-sm mt-1">Password is required</p>
+					}
 
-				<label for="phoneNumber" class="col-span-5 sm:col-span-1 ">Phone Number</label>
-				<input type="text" formControlName="phoneNumber" placeholder="Number"
-					class="col-span-5 sm:col-span-1 tailwind-input mb-5 sm:mb-0">
-				<label for="email" class="col-span-5 sm:col-span-1 sm:text-right ">E-mail</label>
+					@if (passCtrl.touched && passCtrl.hasError('minlength')) {
+					<p class="text-red-500 text-sm mt-1">
+						Password must be at least 6 characters
+					</p>
+					}
+					}
+				</div>
+
+
+				<label for="confirmPassword" class="  col-span-5 sm:col-span-1 md:text-[1.1rem]">Confirm Password</label>
+				<input id="confirmPassword" type="password" formControlName="confirmPassword" placeholder="Confirm Password"
+					class="col-span-5 md:col-span-2 tailwind-input">
+				<div class="col-span-5 md:col-span-2 px-3">
+					@if (donorForm.get('confirmPassword'); as confirmCtrl) {
+					@if (confirmCtrl.touched && confirmCtrl.hasError('required')) {
+					<p class="text-red-500 text-sm mt-1">Please confirm your password</p>
+					}
+
+					@if (confirmCtrl.touched && confirmCtrl.hasError('passwordMismatch')) {
+					<p class="text-red-500 text-sm mt-1">Passwords do not match</p>
+					}
+					}
+
+				</div>
+
+				<label for="email" class="col-span-5 sm:col-span-1 ">E-mail</label>
 				<input type="email" formControlName="email" placeholder="E-mail"
 					class="col-span-5 sm:col-span-2 tailwind-input mb-5 sm:mb-0">
+				<label for="phoneNumber" class="col-span-5 sm:col-span-1 sm:text-right">Phone Number</label>
+				<input type="text" formControlName="phoneNumber" placeholder="Number"
+					class="col-span-5 sm:col-span-1 tailwind-input mb-5 sm:mb-0">
+
 
 
 

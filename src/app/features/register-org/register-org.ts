@@ -15,12 +15,27 @@ export class RegisterOrg implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.orgForm = this.fb.group({
-      orgName: ['', Validators.required],
-      address: ['', Validators.required],
-      headName: ['', Validators.required],
-      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
-    });
+    this.orgForm = this.fb.group(
+      {
+        orgName: ['', Validators.required],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        confirmPassword: ['', Validators.required],
+        address: ['', Validators.required],
+        headName: ['', Validators.required],
+        phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      },
+      { validators: this.passwordMatchValidator }
+    );
+  }
+  passwordMatchValidator(formGroup: FormGroup) {
+    const password = formGroup.get('password')?.value;
+    const confirmPassword = formGroup.get('confirmPassword')?.value;
+
+    if (password !== confirmPassword) {
+      formGroup.get('confirmPassword')?.setErrors({ passwordMismatch: true });
+    } else {
+      formGroup.get('confirmPassword')?.setErrors(null);
+    }
   }
 
   onSubmit() {

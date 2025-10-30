@@ -3,9 +3,10 @@
 		<!-- <div class="w-full flex justify-between items-center mx-auto"> -->
 
 		<!-- Logo -->
-		<div class="flex items-center space-x-2">
-			<img src="images/bloodlinklogo.png" alt="BloodLink Logo" class="[transform:scale(0.7)]" />
+		<div class="flex items-center space-x-2 cursor-pointer" routerLink="/">
+			<img src="images/bloodlinklogo.png" alt="BloodLink Logo" class="[transform:scale(0.7)] " />
 		</div>
+
 
 		<div class="hidden text-white md:flex items-center space-x-8 z-500">
 			@for (link of links; track link.route) {
