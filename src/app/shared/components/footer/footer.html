@@ -1,0 +1,91 @@
+<footer class="bg-black-bg text-white pt-12 pb-6">
+	<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 border-b border-gray-700 pb-10 mb-8">
+
+			<div class="lg:col-span-1">
+				<a class="flex items-center space-x-2 cursor-pointer" routerLink="/">
+					<img src="images/bloodlinklogo.png" alt="BloodLink Logo" />
+				</a>
+				<p class="text-gray-400 text-sm max-w-xs leading-relaxed">
+					Sit leo non vestibulum cras ut nunc. Commodo ornare ultrices ipsum dolor parturient sem fusce.
+				</p>
+			</div>
+
+			<div class="lg:col-span-1">
+				<h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+				<ul class="space-y-2 text-gray-400 text-sm">
+					<li><a href="#" class="hover:text-red-500 transition-colors">About Us</a></li>
+					<li><a href="#" class="hover:text-red-500 transition-colors">Events</a></li>
+					<li><a href="#" class="hover:text-red-500 transition-colors">Contact Us</a></li>
+					<li><a href="#" class="hover:text-red-500 transition-colors">Volunteers</a></li>
+					<li><a href="#" class="hover:text-red-500 transition-colors">FAQs</a></li>
+				</ul>
+			</div>
+
+			<div class="lg:col-span-1">
+				<h3 class="text-xl font-semibold mb-4">Contact Info</h3>
+				<ul class="space-y-2 text-gray-400 text-sm">
+					<li>+98 765 43210</li>
+					<li><a href="mailto:Donors@support.com" class="hover:text-red-500 transition-colors">Donors@support.com</a>
+					</li>
+					<li>130 Anywhere St, Tomsk, Rusia 238795</li>
+				</ul>
+			</div>
+
+			<div class="lg:col-span-1">
+				<div class="bg-gray-600 p-6 rounded-lg shadow-2xl">
+					<h3 class="text-white text-xl font-semibold mb-2">Newsletter</h3>
+					<p class="text-gray-200 text-sm mb-4">
+						Subscribe to Our Newsletter to receive the newest updates and info.
+					</p>
+
+					<form (submit)="subscribe()">
+						<input type="email" placeholder="Email" [(ngModel)]="newsletterEmail" name="emailInput"
+							class="w-full p-3 mb-4 rounded-md border border-gray-500 focus:ring-red-500 focus:border-red-500 text-gray-900"
+							aria-label="Email address for newsletter subscription">
+
+						<button type="submit"
+							class="w-full py-3 bg-primary-red hover:bg-red-800 text-white font-bold rounded-md transition duration-300 shadow-md">
+							Subscribe
+						</button>
+					</form>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="flex flex-col sm:flex-row justify-between items-center pt-4">
+
+			<div class="flex space-x-4 mb-4 sm:mb-0">
+				<a href="#"
+					class="w-12 h-12 bg-primary-red hover:bg-red-800 rounded-lg flex items-center justify-center transition duration-300"
+					aria-label="Instagram">
+					<span class="text-white text-2xl font-bold">I</span>
+				</a>
+
+				<a href="#"
+					class="w-12 h-12 bg-primary-red hover:bg-red-800 rounded-lg flex items-center justify-center transition duration-300"
+					aria-label="Facebook">
+					<span class="text-white text-2xl font-bold">f</span>
+				</a>
+
+				<a href="#"
+					class="w-12 h-12 bg-primary-red hover:bg-red-800 rounded-lg flex items-center justify-center transition duration-300"
+					aria-label="Twitter">
+					<span class="text-white text-2xl font-bold">t</span>
+				</a>
+
+				<a href="#"
+					class="w-12 h-12 bg-primary-red hover:bg-red-800 rounded-lg flex items-center justify-center transition duration-300"
+					aria-label="YouTube">
+					<span class="text-white text-2xl text-2xl">►</span>
+				</a>
+			</div>
+
+			<p class="text-gray-400 text-sm text-center sm:text-right">
+				Copyright © 2025 Donors. All rights reserved. Present by **CreedCreatives**.
+			</p>
+		</div>
+	</div>
+</footer>
