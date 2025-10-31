@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 @theme {
-  --color-primary: rgba(183, 27, 28, 1);
+  --color-primary-red: rgba(183, 27, 28, 1);
   --color-black-bg: rgba(29, 29, 29, 1);
   --color-gray-bg: rgba(249, 249, 249, 1);
   --font-raleway: 'Raleway', system-ui, sans-serif;
