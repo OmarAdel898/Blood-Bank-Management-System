@@ -3,15 +3,16 @@
 		<!-- <div class="w-full flex justify-between items-center mx-auto"> -->
 
 		<!-- Logo -->
-		<div class="flex items-center space-x-2">
-			<img src="images/bloodlinklogo.png" alt="BloodLink Logo" class="[transform:scale(0.7)]" />
+		<div class="flex items-center space-x-2 cursor-pointer" routerLink="/">
+			<img src="images/bloodlinklogo.png" alt="BloodLink Logo" class="[transform:scale(0.7)] " />
 		</div>
+
 
 		<div class="hidden text-white md:flex items-center space-x-8 z-500">
 			@for (link of links; track link.route) {
 
 			@if (!link.subLinks) {
-			<a [routerLink]="link.route" [class.text-primary]="rla.isActive" [class.font-semibold]="rla.isActive"
+			<a [routerLink]="link.route" [class.text-primary-red]="rla.isActive" [class.font-semibold]="rla.isActive"
 				routerLinkActive #rla="routerLinkActive" [routerLinkActiveOptions]="{ exact: true }"
 				class=" hover:text-red-500 text-[1.125rem] transition duration-300">
 				{{link.text}}
@@ -44,7 +45,7 @@
 			}
 		</div>
 		<button
-			class="hidden md:flex md:ml-10 bg-primary hover:bg-red-800 text-white font-semibold py-3 px-8 text-[1.125rem] rounded shadow-lg transition duration-300">
+			class="hidden md:flex md:ml-10 bg-primary-red hover:bg-red-800 text-white font-semibold py-3 px-8 text-[1.125rem] rounded shadow-lg transition duration-300">
 			Login
 		</button>
 
@@ -127,7 +128,8 @@
 
 		<!-- Mobile Login Button -->
 
-		<button class="w-full bg-[#B71B1C] hover:bg-primary text-white font-bold py-3 px-4 rounded-b-lg mt-2 transition">
+		<button
+			class="w-full bg-[#B71B1C] hover:bg-primary-red text-white font-bold py-3 px-4 rounded-b-lg mt-2 transition">
 
 			Login
 

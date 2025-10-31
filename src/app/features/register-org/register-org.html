@@ -4,18 +4,7 @@
 		<div class="p-6 text-white form-gradient">
 			<h2 class="text-2xl font-semibold">Register As Organization</h2>
 		</div>
-		<!-- <form [formGroup]="orgForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-10 p-10">
-			<div>
-				<label for="orgName" class="pr-5">Organization Name</label>
-				<input id="orgName" type="text" name="orgName" placeholder="Name" class="tailwind-input md:w-[400px]" />
-			</div>
 
-			<div class="">
-				<label for="address">Address</label>
-				<textarea formControlName="address" placeholder="Type Here" rows="4"
-					class="tailwind-input mt-1 resize-none mb-5 sm:mb-0"></textarea>
-			</div>
-		</form> -->
 		<form [formGroup]="orgForm" (ngSubmit)="onSubmit()" class="p-10">
 
 			<div class="grid grid-cols-4 sm:gap-y-6 gap-y-3  items-center">
@@ -23,6 +12,40 @@
 				<label for="orgName" class="  col-span-4 sm:col-span-1 md:text-[1.1rem]">Organization Name</label>
 				<input type="text" formControlName="orgName" placeholder="Name" class="col-span-4 md:col-span-2 tailwind-input">
 				<div class="col-span-4 md:col-span-1"></div>
+
+				<label for="password" class=" col-span-4 sm:col-span-1 md:text-[1.1rem]">Password</label>
+				<input id="password" type="password" formControlName="password" placeholder="Password"
+					class="col-span-4 md:col-span-2 tailwind-input">
+				<div class="col-span-4 md:col-span-1 px-3">
+					@if (orgForm.get('password'); as passCtrl) {
+					@if (passCtrl.touched && passCtrl.hasError('required')) {
+					<p class="text-red-500 text-sm mt-1">Password is required</p>
+					}
+
+					@if (passCtrl.touched && passCtrl.hasError('minlength')) {
+					<p class="text-red-500 text-sm mt-1">
+						Password must be at least 6 characters
+					</p>
+					}
+					}
+				</div>
+
+
+				<label for="confirmPassword" class="  col-span-4 sm:col-span-1 md:text-[1.1rem]">Confirm Password</label>
+				<input id="confirmPassword" type="password" formControlName="confirmPassword" placeholder="Confirm Password"
+					class="col-span-4 md:col-span-2 tailwind-input">
+				<div class="col-span-4 md:col-span-1 px-3">
+					@if (orgForm.get('confirmPassword'); as confirmCtrl) {
+					@if (confirmCtrl.touched && confirmCtrl.hasError('required')) {
+					<p class="text-red-500 text-sm mt-1">Please confirm your password</p>
+					}
+
+					@if (confirmCtrl.touched && confirmCtrl.hasError('passwordMismatch')) {
+					<p class="text-red-500 text-sm mt-1">Passwords do not match</p>
+					}
+					}
+
+				</div>
 
 				<label for="address" class=" col-span-4 sm:col-span-1 row-span-2 md:text-[1.125rem]">Address</label>
 				<textarea formControlName="address" placeholder="Type Here" rows="4"
