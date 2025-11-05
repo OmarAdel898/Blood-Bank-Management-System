@@ -1,0 +1,77 @@
+<!-- Tabs Section -->
+<div class="flex justify-center space-x-4 mb-10 pt-28">
+  <button
+    (click)="setActiveTab('donors')"
+    [ngClass]="activeTab === 'donors' 
+    ? 'bg-black text-white shadow px-6 py-2 rounded-full' 
+    : 'bg-white text-gray-700 border px-6 py-2 rounded-full'">
+    Blood Donors
+  </button>
+  <button
+    (click)="setActiveTab('banks')"
+    [ngClass]="activeTab === 'banks' 
+    ? 'bg-black text-white shadow px-6 py-2 rounded-full' 
+    : 'bg-white text-gray-700 border px-6 py-2 rounded-full'">
+    Blood Banks
+  </button>
+</div>
+
+<!--blood donors tard -->
+<div *ngIf="activeTab === 'donors'" class="w-[85%] mx-auto mt-10 bg-white rounded-xl shadow-md">
+  <div class="flex justify-end p-4">
+    <button class="flex items-center gap-2 px-4 py-1 border rounded-full shadow-sm hover:bg-gray-100">
+      <span>Refresh</span>
+      <i class="fa-solid fa-rotate-right"></i>
+    </button>
+  </div>
+
+  <!-- Donor List -->
+  <ul class="px-10 py-4 space-y-6 text-gray-800">
+    <li *ngFor="let donor of bloodDonors" class="list-disc">
+      <p class="font-semibold">{{ donor.name }}</p>
+      <p class="text-gray-500 text-sm">{{ donor.contact }}</p>
+    </li>
+  </ul>
+
+  <!-- Footer -->
+  <div class="border-t px-6 py-4 flex items-center justify-between text-sm text-gray-600">
+    <div class="flex items-center gap-2">
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      <span>Call Main Coordinator If The Above Contacts Are Not Available</span>
+    </div>
+    <i class="fa-solid fa-chevron-down cursor-pointer"></i>
+  </div>
+</div>
+
+<!-- blood banks tap -->
+<div *ngIf="activeTab === 'banks'" class="w-[85%] mx-auto space-y-6 mt-10">
+
+  @for (bank of bloodBanks; track bank) {
+  <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center">
+
+    <!-- Left Content -->
+    <div class="space-y-3">
+      <!-- Bank Name -->
+      <h2 class="text-lg font-semibold text-gray-900 tracking-wide">
+        {{ bank.name }}
+      </h2>
+
+      <!-- Address -->
+      <p class="text-gray-700 text-sm leading-relaxed">
+        {{ bank.address }}
+      </p>
+
+      <!-- Contact -->
+      <p class="text-gray-600 text-sm font-medium">
+        Contact Number : <span class="tracking-wide">{{ bank.contact }}</span>
+      </p>
+    </div>
+
+    <button
+      class="mt-4 sm:mt-0 px-5 py-3 bg-black text-white text-xs font-medium rounded-full shadow hover:bg-gray-800 transition">
+      View Location
+    </button>
+  </div>
+  }
+</div>
+
