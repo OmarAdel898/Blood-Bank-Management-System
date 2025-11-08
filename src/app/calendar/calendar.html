@@ -1,0 +1,52 @@
+<div class="max-w-md mx-auto mt-6 p-6 bg-white shadow-lg rounded-2xl">
+  <!-- ✅ اختيار الشهر والسنة -->
+  <div class="flex justify-between mb-4">
+    <select
+      class="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+      [value]="currentMonth"
+      (change)="onMonthChange($event)"
+    >
+      <option *ngFor="let month of months; let i = index" [value]="i">
+        {{ month }}
+      </option>
+    </select>
+
+    <select
+      class="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+      [value]="currentYear"
+      (change)="onYearChange($event)"
+    >
+      <option *ngFor="let year of years" [value]="year">
+        {{ year }}
+      </option>
+    </select>
+  </div>
+
+  <!-- ✅ أسماء الأيام -->
+  <div class="grid grid-cols-7 text-center font-semibold text-gray-700 border-b pb-2">
+    <div>Mon</div>
+    <div>Tue</div>
+    <div>Wed</div>
+    <div>Thu</div>
+    <div>Fri</div>
+    <div>Sat</div>
+    <div>Sun</div>
+  </div>
+
+  <!-- ✅ عرض الأيام -->
+  <div class="grid grid-cols-7 text-center mt-3">
+    <!-- مسافات البداية -->
+    <div *ngFor="let s of [].constructor(startDay)"></div>
+
+    <!-- الأيام -->
+    <div
+      *ngFor="let day of daysInMonth"
+      class="p-2 rounded-xl cursor-pointer hover:bg-blue-100 transition duration-200"
+      [ngClass]="{
+        'bg-blue-600 text-white font-semibold': day === 1 || day === 5 || day === 18
+      }"
+    >
+      {{ day }}
+    </div>
+  </div>
+</div>
