@@ -1,4 +1,5 @@
-import { Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { Home } from './features/home/home';
 import { RegisterDonor } from './features/register-donor/register-donor';
 import { RegisterOrg } from './features/register-org/register-org';
@@ -11,4 +12,16 @@ export const routes: Routes = [
   { path: 'register-org', component: RegisterOrg },
   { path: 'about', component: About },
   { path: 'find-blood', component: BloodBankList },
+  { path: '**', redirectTo: '' },
 ];
+
+@NgModule({
+  imports: [
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'top',
+      anchorScrolling: 'enabled',
+    }),
+  ],
+  exports: [RouterModule],
+})
+export class AppRoutingModule {}

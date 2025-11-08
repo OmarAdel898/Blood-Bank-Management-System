@@ -19,6 +19,7 @@
 				<input id="password" type="password" formControlName="password" placeholder="Password"
 					class="col-span-5 md:col-span-2 tailwind-input">
 				<div class="col-span-5 md:col-span-2 px-3">
+					Check:
 					@if (donorForm.get('password'); as passCtrl) {
 					@if (passCtrl.touched && passCtrl.hasError('required')) {
 					<p class="text-red-500 text-sm mt-1">Password is required</p>
@@ -29,6 +30,9 @@
 						Password must be at least 6 characters
 					</p>
 					}
+					@else if (passCtrl?.touched && passCtrl?.value?.length >= 6) {
+					<p class="text-green-500 text-sm mt-1"> Valid password</p>
+					}
 					}
 				</div>
 
@@ -37,6 +41,7 @@
 				<input id="confirmPassword" type="password" formControlName="confirmPassword" placeholder="Confirm Password"
 					class="col-span-5 md:col-span-2 tailwind-input">
 				<div class="col-span-5 md:col-span-2 px-3">
+					Check:
 					@if (donorForm.get('confirmPassword'); as confirmCtrl) {
 					@if (confirmCtrl.touched && confirmCtrl.hasError('required')) {
 					<p class="text-red-500 text-sm mt-1">Please confirm your password</p>
@@ -44,6 +49,13 @@
 
 					@if (confirmCtrl.touched && confirmCtrl.hasError('passwordMismatch')) {
 					<p class="text-red-500 text-sm mt-1">Passwords do not match</p>
+					}
+					@else if (
+					confirmCtrl?.touched &&
+					donorForm.get('password')?.value === confirmCtrl?.value &&
+					confirmCtrl?.value?.length >= 6
+					) {
+					<p class="text-green-500 text-sm mt-1">Passwords match</p>
 					}
 					}
 
