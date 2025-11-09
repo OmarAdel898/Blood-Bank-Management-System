@@ -5,6 +5,7 @@ import { RegisterDonor } from './features/register-donor/register-donor';
 import { RegisterOrg } from './features/register-org/register-org';
 import { About } from './features/about/about';
 import { BloodBankList } from './features/find-blood/blood-bank-list/blood-bank-list';
+import { Login } from './features/login/login';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -12,6 +13,7 @@ export const routes: Routes = [
   { path: 'register-org', component: RegisterOrg },
   { path: 'about', component: About },
   { path: 'find-blood', component: BloodBankList },
+  { path: 'login', component: Login },
   { path: '**', redirectTo: '' },
 ];
 
