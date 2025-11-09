@@ -17,8 +17,9 @@
 
 				<label for="password" class=" col-span-5 sm:col-span-1 md:text-[1.1rem]">Password</label>
 				<input id="password" type="password" formControlName="password" placeholder="Password"
-					class="col-span-5 md:col-span-2 tailwind-input">
-				<div class="col-span-5 md:col-span-2 px-3">
+					class="col-span-5 sm:col-span-2 tailwind-input">
+				<div class="col-span-5 sm:col-span-2 px-3">
+					Check:
 					@if (donorForm.get('password'); as passCtrl) {
 					@if (passCtrl.touched && passCtrl.hasError('required')) {
 					<p class="text-red-500 text-sm mt-1">Password is required</p>
@@ -29,14 +30,18 @@
 						Password must be at least 6 characters
 					</p>
 					}
+					@else if (passCtrl?.touched && passCtrl?.value?.length >= 6) {
+					<p class="text-green-500 text-sm mt-1"> Valid password</p>
+					}
 					}
 				</div>
 
 
-				<label for="confirmPassword" class="  col-span-5 sm:col-span-1 md:text-[1.1rem]">Confirm Password</label>
+				<label for="confirmPassword" class="col-span-5 sm:col-span-1 md:text-[1.1rem]">Confirm Password</label>
 				<input id="confirmPassword" type="password" formControlName="confirmPassword" placeholder="Confirm Password"
-					class="col-span-5 md:col-span-2 tailwind-input">
-				<div class="col-span-5 md:col-span-2 px-3">
+					class="col-span-5 sm:col-span-2 tailwind-input">
+				<div class="col-span-5 sm:col-span-2 px-3">
+					Check:
 					@if (donorForm.get('confirmPassword'); as confirmCtrl) {
 					@if (confirmCtrl.touched && confirmCtrl.hasError('required')) {
 					<p class="text-red-500 text-sm mt-1">Please confirm your password</p>
@@ -44,6 +49,13 @@
 
 					@if (confirmCtrl.touched && confirmCtrl.hasError('passwordMismatch')) {
 					<p class="text-red-500 text-sm mt-1">Passwords do not match</p>
+					}
+					@else if (
+					confirmCtrl?.touched &&
+					donorForm.get('password')?.value === confirmCtrl?.value &&
+					confirmCtrl?.value?.length >= 6
+					) {
+					<p class="text-green-500 text-sm mt-1">Passwords match</p>
 					}
 					}
 
@@ -59,17 +71,17 @@
 
 
 
-				<label for="address" class=" col-span-1 sm:col-span-1 row-span-2">Address</label>
+				<label for="address" class=" col-span-2 sm:col-span-1 row-span-2">Address</label>
 				<textarea formControlName="address" placeholder="Type Here" rows="4"
-					class="tailwind-input mt-1 col-span-4 sm:col-span-2 row-span-2 resize-none mb-5 sm:mb-0"></textarea>
+					class="tailwind-input mt-1 col-span-3 sm:col-span-2 row-span-2 resize-none mb-5 sm:mb-0"></textarea>
 
 
-				<label for="age" class="col-span-1 text-right">Age</label>
+				<label for="age" class="col-span-2 sm:col-span-1 sm:text-end">Age</label>
 				<input type="number" formControlName="age" placeholder="18 to 70"
-					class="col-span-1  placeholder:text-xs sm:placeholder:text-base tailwind-input mt-1">
+					class="col-span-3 sm:col-span-1  placeholder:text-xs sm:placeholder:text-base tailwind-input mt-1">
 
-				<label for="bloodGroup" class="col-span-1 text-right ">Blood Group</label>
-				<select formControlName="bloodGroup" class="tailwind-select col-span-2 sm:col-span-1 mt-1">
+				<label for="bloodGroup" class="sm:col-span-1 col-span-2  sm:text-end">Blood Group</label>
+				<select formControlName="bloodGroup" class="tailwind-select col-span-3 sm:col-span-1 mt-1">
 					<option value="" disabled selected>Blood Group</option>
 					<option value="A+">A+</option>
 					<option value="A-">A-</option>
@@ -82,8 +94,8 @@
 				</select>
 
 
-				<label for="governorate" class="col-span-1">Governorate</label>
-				<select formControlName="governorate" class="tailwind-select col-span-2 mt-1">
+				<label for="governorate" class="col-span-2 sm:col-span-1">Governorate</label>
+				<select formControlName="governorate" class="tailwind-select col-span-3 sm:col-span-2 mt-1">
 					<option value="" disabled selected>Governorate</option>
 					<option value="Cairo">Cairo</option>
 					<option value="Giza">Giza</option>
@@ -114,12 +126,14 @@
 					<option value="Sohag">Sohag</option>
 				</select>
 
-				<label for="district" class="col-span-1 text-right">District</label>
-				<input type="text" formControlName="district" placeholder="District" class="col-span-1 tailwind-input mt-1">
+				<label for="district" class="col-span-2 sm:col-span-1 sm:text-end">District</label>
+				<input type="text" formControlName="district" placeholder="District"
+					class="col-span-3 sm:col-span-1 tailwind-input mt-1">
 
 
-				<label for="lastDonationMonth" class="col-span-1">Last Donation</label>
-				<select formControlName="lastDonationMonth" id="lastDonationMonth" class="col-span-2 tailwind-select mt-1">
+				<label for="lastDonationMonth" class="col-span-2 sm:col-span-1">Last Donation</label>
+				<select formControlName="lastDonationMonth" id="lastDonationMonth"
+					class="col-span-3 sm:col-span-2 tailwind-select mt-1">
 					<option value="" disabled selected>Select Month</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
@@ -134,9 +148,10 @@
 					<option value="11">11</option>
 					<option value="12">12</option>
 				</select>
+				<div class="block sm:hidden col-span-2 "></div>
 
-
-				<select formControlName="lastDonationYear" id="lastDonationYear" class="col-span-2 tailwind-select mt-1">
+				<select formControlName="lastDonationYear" id="lastDonationYear"
+					class="col-span-3 sm:col-span-2 tailwind-select mt-1">
 					<option value="" disabled selected>Select Year</option>
 					<option value="2025">2025</option>
 					<option value="2024">2024</option>
