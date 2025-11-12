@@ -6,6 +6,7 @@ import { RegisterOrg } from './features/register-org/register-org';
 import { About } from './features/about/about';
 import { BloodBankList } from './features/find-blood/blood-bank-list/blood-bank-list';
 import { Login } from './features/login/login';
+import { ForgetPassword } from './features/forget-password/forget-password';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -14,6 +15,7 @@ export const routes: Routes = [
   { path: 'about', component: About },
   { path: 'find-blood', component: BloodBankList },
   { path: 'login', component: Login },
+  { path: 'forget-password', component: ForgetPassword },
   { path: '**', redirectTo: '' },
 ];
 

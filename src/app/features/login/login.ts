@@ -13,12 +13,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms'; // ⬅️ استيراد الضروريات
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   // يجب إضافة ReactiveFormsModule إلى imports للمكونات المستقلة (Standalone)
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './login.html',
   styleUrls: ['./login.css'], // يمكنك ترك هذا الملف فارغًا
 })
