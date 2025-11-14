@@ -14,7 +14,14 @@ import { filter } from 'rxjs/operators';
 })
 export class App {
   currentUrl = signal<string>('');
-  hideNavbar = computed(() => this.currentUrl().startsWith('/admin'));
+  hideNavbar = computed(() => 
+    this.currentUrl().startsWith('/admin') || 
+    this.currentUrl().startsWith('/organization-dashboard')
+  );
+  hideFooter = computed(() => 
+    this.currentUrl().startsWith('/admin') || 
+    this.currentUrl().startsWith('/organization-dashboard')
+  );
 
   private readonly router = inject(Router);
 
