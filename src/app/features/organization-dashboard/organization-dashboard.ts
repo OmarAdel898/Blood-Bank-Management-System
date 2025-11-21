@@ -7,7 +7,6 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { DonorsService } from './services/donors.service';
 import { InventoryService } from './services/inventory.service';
 import { RequestsService } from './services/requests.service';
 import { DeliveriesService } from './services/deliveries.service';
@@ -15,14 +14,19 @@ import { ReportsService } from './services/reports.service';
 
 import { OverviewComponent } from './pages/overview/overview';
 import { InventoryComponent } from './pages/inventory/inventory';
-import { DonorsComponent } from './pages/donors/donors';
+import { DonationsComponent } from './pages/donations/donations';
 import { RequestsComponent } from './pages/requests/requests';
 import { DeliveriesComponent } from './pages/deliveries/deliveries';
 import { RequestModalComponent } from './components/request-modal/request-modal';
-import { DonorModalComponent } from './components/donor-modal/donor-modal';
-import { ReportModalComponent } from './components/report-modal/report-modal';
+import { DonationModalComponent } from './components/donor-modal/donor-modal';
+import { ReportComponent } from './pages/report/report';
 import { Alert } from '../../core/models/Alert.model';
 import { Report } from '../../core/models/report.model';
+import { BloodRequest } from '../../core/models/blood-request.model';
+import { Delivery } from '../../core/models/delivery.model';
+import { BloodUnit } from '../../core/models/blood-unit.model';
+import { Donation } from '../../core/models/donation.model';
+import { DonationsService } from './services/donations.service';
 
 @Component({
   selector: 'app-organization-dashboard',
@@ -33,12 +37,12 @@ import { Report } from '../../core/models/report.model';
     ReactiveFormsModule,
     OverviewComponent,
     InventoryComponent,
-    DonorsComponent,
+    DonationsComponent,
     RequestsComponent,
     DeliveriesComponent,
     RequestModalComponent,
-    DonorModalComponent,
-    ReportModalComponent,
+    DonationModalComponent,
+    ReportComponent,
   ],
   templateUrl: './organization-dashboard.html',
   styleUrls: ['./organization-dashboard.css'],
@@ -47,7 +51,7 @@ export class OrganizationDashboardComponent implements OnInit, OnDestroy {
   // UI State
   sidebarCollapsed = false;
   sidebarMobileOpen = false;
-  activeSection: 'overview' | 'inventory' | 'donors' | 'requests' | 'deliveries' | 'reports' =
+  activeSection: 'overview' | 'inventory' | 'donations' | 'requests' | 'deliveries' | 'reports' =
     'overview';
 
   // Data
@@ -69,13 +73,14 @@ export class OrganizationDashboardComponent implements OnInit, OnDestroy {
 
   // Forms
   requestForm!: FormGroup;
-  donorForm!: FormGroup;
+  donationForm!: FormGroup;
 
+  readonly organizationId = 'ORG-001';
   readonly currentDate = new Date().toLocaleDateString();
 
   // Modals
   showRequestModal = false;
-  showDonorModal = false;
+  showDonationModal = false;
 
   // Loading / error state
   isLoading = false;
@@ -84,9 +89,9 @@ export class OrganizationDashboardComponent implements OnInit, OnDestroy {
   // Note: services in this feature return Promise-based axios responses.
 
   constructor(
-    private donorsService: DonorsService,
     private inventoryService: InventoryService,
     private requestsService: RequestsService,
+    private donationsService: DonationsService,
     private deliveriesService: DeliveriesService,
     private reportsService: ReportsService,
     private fb: FormBuilder
@@ -113,13 +118,15 @@ export class OrganizationDashboardComponent implements OnInit, OnDestroy {
       }),
     });
 
-    this.donorForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required],
+    this.donationForm = this.fb.group({
+      donorId: [''],
+      donorName: ['', Validators.required],
       bloodType: ['', Validators.required],
+      unitsCollected: [1, [Validators.required, Validators.min(1)]],
       donationDate: [new Date().toISOString().split('T')[0], Validators.required],
       donationTime: [new Date().toTimeString().slice(0, 5), Validators.required],
+      location: [''],
+      notes: [''],
     });
   }
 
@@ -127,24 +134,32 @@ export class OrganizationDashboardComponent implements OnInit, OnDestroy {
     const today = new Date().toISOString().split('T')[0];
 
     Promise.all([
-      this.donorsService.getAll(),
+      this.donationsService.getAll(),
       this.requestsService.getAll(),
       this.deliveriesService.getAll(),
       this.inventoryService.getAll(),
     ])
-      .then(([donorsRes, requestsRes, deliveriesRes, inventoryRes]) => {
-        const donors = donorsRes.data || [];
-        const requests = requestsRes.data || [];
-        const deliveries = deliveriesRes.data || [];
-        const inventory = inventoryRes.data || [];
+      .then(([donationsRes, requestsRes, deliveriesRes, inventoryRes]) => {
+        const donations: Donation[] = (donationsRes.data || []).filter(
+          (donation: Donation) => donation.organizationId === this.organizationId
+        );
+        const requests: BloodRequest[] = (requestsRes.data || []).filter(
+          (request: BloodRequest) => request.organizationId === this.organizationId
+        );
+        const deliveries: Delivery[] = (deliveriesRes.data || []).filter(
+          (delivery: Delivery) => delivery.organizationId === this.organizationId
+        );
+        const inventory: BloodUnit[] = (inventoryRes.data || []).filter(
+          (unit: BloodUnit) => unit.organizationId === this.organizationId
+        );
 
         const reportDate = new Date(today);
         const dayStart = new Date(reportDate.setHours(0, 0, 0, 0));
         const dayEnd = new Date(reportDate.setHours(23, 59, 59, 999));
 
-        const dayDonations = donors.filter((d: any) => {
-          const donationDate = new Date(d.donationDate);
-          return donationDate >= dayStart && donationDate <= dayEnd && d.status === 'completed';
+        const dayDonations = donations.filter((donation: Donation) => {
+          const donationDate = new Date(donation.donationDate);
+          return donationDate >= dayStart && donationDate <= dayEnd && donation.status === 'completed';
         }).length;
 
         const dayRequests = requests.filter((r: any) => {
@@ -182,6 +197,7 @@ export class OrganizationDashboardComponent implements OnInit, OnDestroy {
         });
 
         this.dailyReport = {
+          organizationId: this.organizationId,
           date: today,
           totalDonations: dayDonations,
           totalRequests: dayRequests,
@@ -237,6 +253,7 @@ export class OrganizationDashboardComponent implements OnInit, OnDestroy {
         requestedDate: new Date().toISOString(),
         requestedTime: new Date().toTimeString().slice(0, 5),
         status: 'pending',
+        organizationId: this.organizationId,
       })
       .then(() => {
         this.requestRefreshToken++;
@@ -247,30 +264,57 @@ export class OrganizationDashboardComponent implements OnInit, OnDestroy {
   }
 
   // ========== DONORS ==========
-  openNewDonor(): void {
-    this.donorForm.reset({
+  openNewDonation(): void {
+    this.donationForm.reset({
+      donorId: '',
+      donorName: '',
+      bloodType: '',
+      unitsCollected: 1,
       donationDate: new Date().toISOString().split('T')[0],
       donationTime: new Date().toTimeString().slice(0, 5),
+      location: '',
+      notes: '',
     });
-    this.showDonorModal = true;
+    this.showDonationModal = true;
   }
 
-  saveDonor(): void {
-    if (this.donorForm.invalid) return;
-    const data = this.donorForm.value;
-    this.donorsService
+  saveDonation(): void {
+    if (this.donationForm.invalid) return;
+    const value = this.donationForm.value;
+    const donationDateTime = new Date(`${value.donationDate}T${value.donationTime}`);
+    const donationDateIso = donationDateTime.toISOString();
+    const expiryDate = new Date(donationDateTime.getTime() + 42 * 24 * 60 * 60 * 1000).toISOString();
+
+    this.donationsService
       .add({
-        ...data,
-        donationDate: new Date(data.donationDate).toISOString(),
-        status: 'scheduled',
-        eligibilityStatus: 'eligible',
-        totalDonations: 0,
+        organizationId: this.organizationId,
+        donorId: value.donorId ? value.donorId : null,
+        donorName: value.donorName,
+        bloodType: value.bloodType,
+        donationDate: donationDateIso,
+        donationTime: value.donationTime,
+        unitsCollected: value.unitsCollected,
+        status: 'completed',
+        location: value.location || 'Main Donation Center',
+        notes: value.notes || '',
       })
+      .then(() =>
+        this.inventoryService.add({
+          organizationId: this.organizationId,
+          bloodType: value.bloodType,
+          collectedDate: donationDateIso,
+          expiryDate,
+          status: 'available',
+          donorId: value.donorId || undefined,
+          location: value.location || 'Main Donation Center',
+        })
+      )
       .then(() => {
+        this.inventoryRefreshToken++;
         this.donorRefreshToken++;
       })
       .finally(() => {
-        this.showDonorModal = false;
+        this.showDonationModal = false;
       });
   }
 
@@ -285,7 +329,7 @@ export class OrganizationDashboardComponent implements OnInit, OnDestroy {
 
   closeModals(): void {
     this.showRequestModal = false;
-    this.showDonorModal = false;
+    this.showDonationModal = false;
   }
 
   toggleSidebar(): void {
@@ -301,7 +345,7 @@ export class OrganizationDashboardComponent implements OnInit, OnDestroy {
   }
 
   setActiveSection(
-    section: 'overview' | 'inventory' | 'donors' | 'requests' | 'deliveries' | 'reports'
+    section: 'overview' | 'inventory' | 'donations' | 'requests' | 'deliveries' | 'reports'
   ): void {
     this.activeSection = section;
     // Close mobile sidebar when navigating

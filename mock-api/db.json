@@ -7,7 +7,8 @@
       "expiryDate": "2025-06-18T00:00:00.000Z",
       "status": "available",
       "donorId": "DON-001",
-      "location": "Main Storage"
+      "location": "Main Storage",
+      "organizationId": "ORG-001"
     },
     {
       "id": "INV-002",
@@ -16,7 +17,8 @@
       "expiryDate": "2025-06-10T00:00:00.000Z",
       "status": "reserved",
       "donorId": "DON-002",
-      "location": "Cold Room B"
+      "location": "Cold Room B",
+      "organizationId": "ORG-001"
     },
     {
       "id": "INV-003",
@@ -25,7 +27,8 @@
       "expiryDate": "2025-06-05T00:00:00.000Z",
       "status": "available",
       "donorId": "DON-003",
-      "location": "Cold Room A"
+      "location": "Cold Room A",
+      "organizationId": "ORG-001"
     },
     {
       "id": "c208",
@@ -34,7 +37,8 @@
       "expiryDate": "2026-01-02T07:25:11.354Z",
       "status": "available",
       "donorId": "DON-001",
-      "location": "Main Storage"
+      "location": "Main Storage",
+      "organizationId": "ORG-001"
     },
     {
       "id": "1d87",
@@ -43,7 +47,8 @@
       "expiryDate": "2026-01-02T07:40:25.160Z",
       "status": "available",
       "donorId": "01c4",
-      "location": "Cold Room A"
+      "location": "Cold Room A",
+      "organizationId": "ORG-001"
     },
     {
       "id": "INV-004",
@@ -52,7 +57,8 @@
       "expiryDate": "2025-06-20T00:00:00.000Z",
       "status": "available",
       "donorId": "DON-005",
-      "location": "Main Storage"
+      "location": "Main Storage",
+      "organizationId": "ORG-001"
     },
     {
       "id": "INV-005",
@@ -61,7 +67,8 @@
       "expiryDate": "2025-06-12T00:00:00.000Z",
       "status": "used",
       "donorId": "DON-006",
-      "location": "N/A"
+      "location": "N/A",
+      "organizationId": "ORG-001"
     },
     {
       "id": "INV-006",
@@ -70,7 +77,8 @@
       "expiryDate": "2025-06-22T00:00:00.000Z",
       "status": "quarantined",
       "donorId": "DON-007",
-      "location": "Quarantine Zone"
+      "location": "Quarantine Zone",
+      "organizationId": "ORG-001"
     },
     {
       "id": "INV-007",
@@ -79,7 +87,8 @@
       "expiryDate": "2025-06-07T00:00:00.000Z",
       "status": "expired",
       "donorId": "DON-008",
-      "location": "Expired Disposal"
+      "location": "Expired Disposal",
+      "organizationId": "ORG-001"
     },
     {
       "id": "INV-008",
@@ -88,7 +97,8 @@
       "expiryDate": "2025-06-25T00:00:00.000Z",
       "status": "reserved",
       "donorId": "DON-009",
-      "location": "Cold Room B"
+      "location": "Cold Room B",
+      "organizationId": "ORG-001"
     },
     {
       "id": "5248",
@@ -96,7 +106,8 @@
       "collectedDate": "2025-11-21T08:08:43.156Z",
       "expiryDate": "2026-01-02T08:08:43.156Z",
       "status": "available",
-      "donorId": "DON-009"
+      "donorId": "DON-009",
+      "organizationId": "ORG-001"
     },
     {
       "id": "ec88",
@@ -104,7 +115,28 @@
       "collectedDate": "2025-11-21T08:10:58.456Z",
       "expiryDate": "2026-01-02T08:10:58.456Z",
       "status": "available",
-      "donorId": "DON-010"
+      "donorId": "DON-010",
+      "organizationId": "ORG-001"
+    },
+    {
+      "id": "df34",
+      "bloodType": "A+",
+      "collectedDate": "2025-11-21T13:41:40.482Z",
+      "expiryDate": "2026-01-02T13:41:40.482Z",
+      "status": "available",
+      "donorId": "DON-001",
+      "organizationId": "ORG-001",
+      "location": "Main Storage"
+    },
+    {
+      "id": "1b47",
+      "bloodType": "A+",
+      "collectedDate": "2025-11-21T14:00:23.530Z",
+      "expiryDate": "2026-01-02T14:00:23.530Z",
+      "status": "available",
+      "donorId": "DON-001",
+      "organizationId": "ORG-001",
+      "location": "Main Storage"
     }
   ],
   "donors": [
@@ -119,7 +151,8 @@
       "status": "completed",
       "eligibilityStatus": "eligible",
       "lastDonationDate": "2025-11-21T07:25:11.278Z",
-      "totalDonations": 7
+      "totalDonations": 7,
+      "organizationId": "ORG-001"
     },
     {
       "id": "DON-002",
@@ -132,7 +165,8 @@
       "status": "completed",
       "eligibilityStatus": "eligible",
       "lastDonationDate": "2025-05-21T09:30:00.000Z",
-      "totalDonations": 6
+      "totalDonations": 6,
+      "organizationId": "ORG-001"
     },
     {
       "id": "DON-003",
@@ -145,7 +179,8 @@
       "status": "completed",
       "eligibilityStatus": "pending",
       "lastDonationDate": "2025-11-21T07:17:37.999Z",
-      "totalDonations": 3
+      "totalDonations": 3,
+      "organizationId": "ORG-001"
     },
     {
       "id": "01c4",
@@ -158,7 +193,8 @@
       "status": "completed",
       "eligibilityStatus": "eligible",
       "totalDonations": 1,
-      "lastDonationDate": "2025-11-21T07:40:25.149Z"
+      "lastDonationDate": "2025-11-21T07:40:25.149Z",
+      "organizationId": "ORG-001"
     },
     {
       "id": "DON-005",
@@ -171,7 +207,8 @@
       "status": "completed",
       "eligibilityStatus": "eligible",
       "lastDonationDate": "2025-05-20T11:00:00.000Z",
-      "totalDonations": 2
+      "totalDonations": 2,
+      "organizationId": "ORG-001"
     },
     {
       "id": "DON-006",
@@ -182,9 +219,10 @@
       "donationDate": "2025-05-15T14:20:00.000Z",
       "donationTime": "14:20",
       "status": "completed",
-      "eligibilityStatus": "not_eligible",
+      "eligibilityStatus": "ineligible",
       "lastDonationDate": "2025-05-15T14:20:00.000Z",
-      "totalDonations": 4
+      "totalDonations": 4,
+      "organizationId": "ORG-001"
     },
     {
       "id": "DON-007",
@@ -195,9 +233,10 @@
       "donationDate": "2025-05-22T16:45:00.000Z",
       "donationTime": "16:45",
       "status": "deferred",
-      "eligibilityStatus": "not_eligible",
+      "eligibilityStatus": "ineligible",
       "lastDonationDate": "2024-11-22T16:45:00.000Z",
-      "totalDonations": 5
+      "totalDonations": 5,
+      "organizationId": "ORG-001"
     },
     {
       "id": "DON-008",
@@ -210,7 +249,8 @@
       "status": "completed",
       "eligibilityStatus": "eligible",
       "lastDonationDate": "2025-05-12T13:10:00.000Z",
-      "totalDonations": 8
+      "totalDonations": 8,
+      "organizationId": "ORG-001"
     },
     {
       "id": "DON-009",
@@ -223,7 +263,8 @@
       "status": "completed",
       "eligibilityStatus": "pending",
       "lastDonationDate": "2025-11-21T08:08:43.138Z",
-      "totalDonations": 4
+      "totalDonations": 4,
+      "organizationId": "ORG-001"
     },
     {
       "id": "DON-010",
@@ -236,7 +277,8 @@
       "status": "completed",
       "eligibilityStatus": "eligible",
       "lastDonationDate": "2025-11-21T08:10:58.450Z",
-      "totalDonations": 7
+      "totalDonations": 7,
+      "organizationId": "ORG-001"
     }
   ],
   "requests": [
@@ -253,7 +295,8 @@
       "status": "in_transit",
       "location": {
         "address": "Cairo, Nasr City"
-      }
+      },
+      "organizationId": "ORG-001"
     },
     {
       "id": "REQ-002",
@@ -268,7 +311,8 @@
       "status": "completed",
       "location": {
         "address": "Fifth Settlement"
-      }
+      },
+      "organizationId": "ORG-001"
     },
     {
       "id": "REQ-003",
@@ -283,7 +327,8 @@
       "status": "completed",
       "location": {
         "address": "Giza"
-      }
+      },
+      "organizationId": "ORG-001"
     },
     {
       "id": "REQ-004",
@@ -298,7 +343,8 @@
       "status": "pending",
       "location": {
         "address": "Abbaseya, Cairo"
-      }
+      },
+      "organizationId": "ORG-001"
     },
     {
       "id": "REQ-005",
@@ -313,7 +359,8 @@
       "status": "completed",
       "location": {
         "address": "Manial, Cairo"
-      }
+      },
+      "organizationId": "ORG-001"
     },
     {
       "id": "REQ-006",
@@ -328,7 +375,24 @@
       "status": "pending",
       "location": {
         "address": "Alexandria Desert Road"
-      }
+      },
+      "organizationId": "ORG-001"
+    },
+    {
+      "id": "94d5",
+      "hospitalName": "El Salam",
+      "patientName": "Nasser Ali",
+      "bloodType": "A-",
+      "unitsNeeded": 1,
+      "priority": "high",
+      "location": {
+        "address": "El Salam rood strrt"
+      },
+      "requestedDate": "2025-11-21T13:04:58.139Z",
+      "requestedTime": "15:04",
+      "status": "pending",
+      "organizationId": "ORG-001",
+      "requestNumber": "REQ-1763730298139"
     }
   ],
   "deliveries": [
@@ -349,7 +413,8 @@
         "lat": 30.0625,
         "lng": 31.2497
       },
-      "actualArrival": "2025-11-21T07:59:50.170Z"
+      "actualArrival": "2025-11-21T07:59:50.170Z",
+      "organizationId": "ORG-001"
     },
     {
       "id": "DEL-002",
@@ -364,7 +429,8 @@
         "address": "New Cairo"
       },
       "estimatedArrival": "2025-11-21T08:22:42.934Z",
-      "actualArrival": "2025-11-21T08:11:30.552Z"
+      "actualArrival": "2025-11-21T08:11:30.552Z",
+      "organizationId": "ORG-001"
     },
     {
       "id": "07bb",
@@ -379,7 +445,8 @@
         "name": "Dar El Fouad",
         "address": "Giza"
       },
-      "actualArrival": "2025-11-21T08:11:16.449Z"
+      "actualArrival": "2025-11-21T08:11:16.449Z",
+      "organizationId": "ORG-001"
     },
     {
       "id": "DEL-004",
@@ -394,7 +461,8 @@
         "name": "Kasr Al Ainy",
         "address": "Manial, Cairo"
       },
-      "actualArrival": "2025-11-21T08:07:36.258Z"
+      "actualArrival": "2025-11-21T08:07:36.258Z",
+      "organizationId": "ORG-001"
     },
     {
       "id": "DEL-005",
@@ -408,7 +476,8 @@
       "destination": {
         "name": "Saudi German Hospital",
         "address": "Alexandria Desert Road"
-      }
+      },
+      "organizationId": "ORG-001"
     }
   ],
   "alerts": [
@@ -420,7 +489,8 @@
       "message": "Only one O- unit remaining in inventory.",
       "bloodType": "O-",
       "createdAt": "2025-05-21T05:00:00.000Z",
-      "acknowledged": false
+      "acknowledged": false,
+      "organizationId": "ORG-001"
     },
     {
       "id": "ALT-002",
@@ -430,7 +500,8 @@
       "message": "INV-001 will expire within 7 days.",
       "bloodType": "A+",
       "createdAt": "2025-05-20T12:00:00.000Z",
-      "acknowledged": false
+      "acknowledged": false,
+      "organizationId": "ORG-001"
     },
     {
       "id": "ALT-003",
@@ -440,7 +511,8 @@
       "message": "Donor Mahmoud Fathi (DON-003) eligibility is pending review.",
       "bloodType": "B+",
       "createdAt": "2025-05-22T11:05:00.000Z",
-      "acknowledged": true
+      "acknowledged": true,
+      "organizationId": "ORG-001"
     },
     {
       "id": "ALT-004",
@@ -450,7 +522,8 @@
       "message": "Delivery to Cairo Hospital is experiencing unexpected delays.",
       "bloodType": "O-",
       "createdAt": "2025-05-21T08:15:00.000Z",
-      "acknowledged": false
+      "acknowledged": false,
+      "organizationId": "ORG-001"
     },
     {
       "id": "ALT-005",
@@ -460,7 +533,8 @@
       "message": "Unit INV-006 (O+) has been quarantined for further testing.",
       "bloodType": "O+",
       "createdAt": "2025-05-22T17:30:00.000Z",
-      "acknowledged": true
+      "acknowledged": true,
+      "organizationId": "ORG-001"
     }
   ],
   "reports": [
@@ -489,7 +563,8 @@
           "used": 0,
           "expired": 0
         }
-      ]
+      ],
+      "organizationId": "ORG-001"
     },
     {
       "id": "REP-002",
@@ -528,7 +603,8 @@
           "used": 1,
           "expired": 0
         }
-      ]
+      ],
+      "organizationId": "ORG-001"
     },
     {
       "id": "REP-003",
@@ -567,7 +643,8 @@
           "used": 0,
           "expired": 0
         }
-      ]
+      ],
+      "organizationId": "ORG-001"
     }
   ],
   "organizations": [
@@ -595,25 +672,109 @@
       "id": "USR-001",
       "name": "Admin User",
       "email": "admin@bloodbank.com",
-      "role": "admin"
+      "role": "admin",
+      "organizationId": "ORG-001"
     },
     {
       "id": "USR-002",
       "name": "Lab Technician",
       "email": "lab@bloodbank.com",
-      "role": "lab_technician"
+      "role": "lab_technician",
+      "organizationId": "ORG-001"
     },
     {
       "id": "USR-003",
       "name": "Coordinator",
       "email": "coordinator@bloodbank.com",
-      "role": "coordinator"
+      "role": "coordinator",
+      "organizationId": "ORG-001"
     },
     {
       "id": "USR-004",
       "name": "View Only User",
       "email": "viewer@bloodbank.com",
-      "role": "viewer"
+      "role": "viewer",
+      "organizationId": "ORG-001"
+    }
+  ],
+  "donations": [
+    {
+      "id": "DONATION-001",
+      "organizationId": "ORG-001",
+      "donorId": "DON-001",
+      "donorName": "Ahmed Mohamed",
+      "bloodType": "A+",
+      "donationDate": "2025-05-21T08:05:00.000Z",
+      "donationTime": "08:05",
+      "unitsCollected": 1,
+      "status": "completed",
+      "location": "Main Donation Center",
+      "notes": "Routine donation"
+    },
+    {
+      "id": "DONATION-002",
+      "organizationId": "ORG-001",
+      "donorId": "DON-002",
+      "donorName": "Sara Ali",
+      "bloodType": "O-",
+      "donationDate": "2025-05-21T09:45:00.000Z",
+      "donationTime": "09:45",
+      "unitsCollected": 1,
+      "status": "completed",
+      "location": "New Cairo Center",
+      "notes": "Emergency match"
+    },
+    {
+      "id": "DONATION-003",
+      "organizationId": "ORG-001",
+      "donorId": "DON-003",
+      "donorName": "Mahmoud Fathi",
+      "bloodType": "B+",
+      "donationDate": "2025-05-22T11:20:00.000Z",
+      "donationTime": "11:20",
+      "unitsCollected": 1,
+      "status": "completed",
+      "location": "Giza Mobile Unit",
+      "notes": "Corporate drive"
+    },
+    {
+      "id": "DONATION-004",
+      "organizationId": "ORG-001",
+      "donorId": null,
+      "donorName": "Walk-in Emergency",
+      "bloodType": "AB+",
+      "donationDate": "2025-05-23T13:10:00.000Z",
+      "donationTime": "13:10",
+      "unitsCollected": 1,
+      "status": "completed",
+      "location": "Main Donation Center",
+      "notes": "No ID provided"
+    },
+    {
+      "id": "DONATION-005",
+      "organizationId": "ORG-002",
+      "donorId": "DON-005",
+      "donorName": "Fatima Zahra",
+      "bloodType": "AB-",
+      "donationDate": "2025-05-20T11:15:00.000Z",
+      "donationTime": "11:15",
+      "unitsCollected": 1,
+      "status": "completed",
+      "location": "Main Donation Center",
+      "notes": "Scheduled donation"
+    },
+    {
+      "id": "DONATION-006",
+      "organizationId": "ORG-002",
+      "donorId": null,
+      "donorName": "Corporate Drive",
+      "bloodType": "O+",
+      "donationDate": "2025-05-24T15:00:00.000Z",
+      "donationTime": "15:00",
+      "unitsCollected": 2,
+      "status": "scheduled",
+      "location": "Alexandria Outreach",
+      "notes": "Awaiting lab screening"
     }
   ]
 }

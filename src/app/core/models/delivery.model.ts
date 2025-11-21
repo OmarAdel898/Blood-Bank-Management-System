@@ -2,6 +2,7 @@ export type DeliveryStatus = 'scheduled' | 'in_transit' | 'delivered' | 'cancell
 
 export interface Delivery {
   id: string;
+  organizationId: string;
   requestId: string;
   requestNumber: string;
   driverName: string;

@@ -1,11 +1,11 @@
 <section class="mb-8">
   <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
-    <h2 class="text-lg font-semibold text-gray-900">Today's Donors</h2>
+    <h2 class="text-lg font-semibold text-gray-900">Donations</h2>
     <button
-      (click)="onAddDonor()"
+      (click)="onAddDonation()"
       class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 text-sm font-medium w-full sm:w-auto"
     >
-      + Add Donor
+      + Record Donation
     </button>
   </div>
   <div class="bg-white rounded-lg shadow-sm overflow-hidden">
@@ -41,42 +41,42 @@
           </tr>
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
-          <tr *ngFor="let donor of donors" class="hover:bg-gray-50">
+          <tr *ngFor="let donation of donations" class="hover:bg-gray-50">
             <td class="px-3 sm:px-6 py-4">
-              <div class="text-sm font-medium text-gray-900">{{ donor.name }}</div>
-              <div class="text-xs sm:text-sm text-gray-500">{{ donor.phone }}</div>
+              <div class="text-sm font-medium text-gray-900">{{ donation.donorName }}</div>
+              <div class="text-xs sm:text-sm text-gray-500">{{ donation.location }}</div>
             </td>
             <td class="px-3 sm:px-6 py-4 whitespace-nowrap">
               <span
                 class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800"
               >
-                {{ donor.bloodType }}
+                {{ donation.bloodType }}
               </span>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-              {{ formatTime(donor.donationTime) }}
+              {{ formatTime(donation.donationTime) }}
             </td>
             <td class="px-3 sm:px-6 py-4 whitespace-nowrap">
               <span
                 class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full"
-                [ngClass]="getStatusColor(donor.status)"
+                [ngClass]="getStatusColor(donation.status)"
               >
-                {{ donor.status }}
+                {{ donation.status }}
               </span>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
               <button
-                *ngIf="donor.status === 'scheduled'"
-                (click)="onMarkCompleteClicked(donor)"
+                *ngIf="donation.status === 'scheduled'"
+                (click)="onMarkCompleteClicked(donation)"
                 class="text-green-600 hover:text-green-900"
               >
                 Mark Complete
               </button>
             </td>
           </tr>
-          <tr *ngIf="donors.length === 0">
+          <tr *ngIf="donations.length === 0">
             <td colspan="5" class="px-6 py-4 text-center text-sm text-gray-500">
-              No donors scheduled for today
+              No donations recorded for today
             </td>
           </tr>
         </tbody>

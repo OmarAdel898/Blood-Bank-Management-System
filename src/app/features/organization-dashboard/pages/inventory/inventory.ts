@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { CommonModule } from '@angular/common';
 import { InventorySummary } from '../../../../core/models/inventory.model';
 import { BloodType } from '../../../../core/models/blood-request.model';
+import { BloodUnit } from '../../../../core/models/blood-unit.model';
 import { InventoryService } from '../../services/inventory.service';
 
 @Component({
@@ -13,6 +14,7 @@ import { InventoryService } from '../../services/inventory.service';
 })
 export class InventoryComponent implements OnInit, OnChanges {
   @Input() refreshToken = 0;
+  @Input() organizationId!: string;
   @Output() statsChange = new EventEmitter<{
     totalAvailableUnits: number;
     unitsExpiringSoon: number;
@@ -40,7 +42,9 @@ export class InventoryComponent implements OnInit, OnChanges {
 
     try {
       const res = await this.inventoryService.getAll();
-      const units = res?.data ?? [];
+      const units: BloodUnit[] = (res?.data ?? []).filter(
+        (unit: BloodUnit) => unit.organizationId === this.organizationId
+      );
       this.inventorySummary = this.computeInventorySummary(units);
       this.emitStats();
     } catch (err: any) {
@@ -65,7 +69,7 @@ export class InventoryComponent implements OnInit, OnChanges {
     this.statsChange.emit({ totalAvailableUnits, unitsExpiringSoon });
   }
 
-  private computeInventorySummary(units: any[]): InventorySummary[] {
+  private computeInventorySummary(units: BloodUnit[]): InventorySummary[] {
     const bloodTypes: BloodType[] = ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'];
     const now = new Date();
     const sevenDaysFromNow = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);

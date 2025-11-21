@@ -1,5 +1,6 @@
 export interface BloodRequest {
   id: string;
+  organizationId: string;
   requestNumber: string;
   patientName?: string;
   hospitalName: string;

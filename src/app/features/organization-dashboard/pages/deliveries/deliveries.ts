@@ -12,6 +12,7 @@ import { DeliveriesService } from '../../services/deliveries.service';
 })
 export class DeliveriesComponent implements OnInit, OnChanges {
   @Input() refreshToken = 0;
+  @Input() organizationId!: string;
   @Output() statsChange = new EventEmitter<{ pendingDeliveries: number }>();
 
   deliveries: Delivery[] = [];
@@ -36,8 +37,12 @@ export class DeliveriesComponent implements OnInit, OnChanges {
 
     try {
       const res = await this.deliveriesService.getAll();
-      const all = res?.data ?? [];
-      this.deliveries = all
+      const all = (res?.data ?? []).filter(
+        (delivery: Delivery) => delivery.organizationId === this.organizationId
+      );
+      this.deliveries = all.filter(
+        (delivery: Delivery) => delivery.status === 'scheduled' || delivery.status === 'in_transit'
+      );
       this.emitStats();
     } catch (err: any) {
       this.deliveries = [];

@@ -15,6 +15,7 @@ import { Delivery } from '../../../../core/models/delivery.model';
 })
 export class RequestsComponent implements OnInit, OnChanges {
   @Input() refreshToken = 0;
+  @Input() organizationId!: string;
   filteredRequests: BloodRequest[] = [];
   requestFilter = {
     search: '',
@@ -101,7 +102,9 @@ export class RequestsComponent implements OnInit, OnChanges {
 
     try {
       const res = await this.requestsService.getAll();
-      this.requests = res?.data ?? [];
+      this.requests = (res?.data ?? []).filter(
+        (request: BloodRequest) => request.organizationId === this.organizationId
+      );
       this.applyFilters();
       this.emitStats();
     } catch (err: any) {
@@ -140,7 +143,9 @@ export class RequestsComponent implements OnInit, OnChanges {
   private async syncDeliveryForRequest(request: BloodRequest, status: RequestStatus): Promise<void> {
     try {
       const deliveriesRes = await this.deliveriesService.getAll();
-      const deliveries = deliveriesRes?.data ?? [];
+      const deliveries = (deliveriesRes?.data ?? []).filter(
+        (delivery: Delivery) => delivery.organizationId === this.organizationId
+      );
       const existing = deliveries.find((delivery: Delivery) => delivery.requestId === request.id);
 
       if (status === 'approved') {
@@ -156,7 +161,8 @@ export class RequestsComponent implements OnInit, OnChanges {
             destination: {
               name: request.hospitalName,
               address: request.location?.address || 'Not specified'
-            }
+            },
+            organizationId: this.organizationId
           } as Omit<Delivery, 'id'>);
         } else {
           await this.deliveriesService.update(existing.id, {

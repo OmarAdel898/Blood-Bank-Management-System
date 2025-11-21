@@ -1,16 +1,16 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DailyReport } from '../../../admin/models/blood-bank.models';
+import { Report } from '../../../../core/models/report.model';
 
 @Component({
-  selector: 'app-report-modal',
+  selector: 'app-report',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './report-modal.html',
-  styleUrls: ['./report-modal.css']
+  templateUrl: './report.html',
+  styleUrls: ['./report.css']
 })
-export class ReportModalComponent {
-  @Input() dailyReport: DailyReport | null = null;
+export class ReportComponent {
+  @Input() dailyReport: Report | null = null;
 
   formatDate(date: string): string {
     return new Date(date).toLocaleDateString();

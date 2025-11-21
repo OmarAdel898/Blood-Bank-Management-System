@@ -8,52 +8,54 @@
     (click)="$event.stopPropagation()"
   >
     <div class="p-4 sm:p-6">
-      <h3 class="text-lg font-semibold text-gray-900 mb-4">Add Donor</h3>
-      <form [formGroup]="donorForm" (ngSubmit)="onSave()">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">Record Donation</h3>
+      <form [formGroup]="donationForm" (ngSubmit)="onSave()">
         <div class="space-y-4">
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Name *</label>
-            <input
-              formControlName="name"
-              type="text"
-              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
-            />
-          </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Donor ID</label>
               <input
-                formControlName="email"
-                type="email"
+                formControlName="donorId"
+                type="text"
+                placeholder="Optional"
                 class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
               />
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">Phone *</label>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Donor Name *</label>
               <input
-                formControlName="phone"
-                type="tel"
+                formControlName="donorName"
+                type="text"
                 class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
               />
             </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Blood Type *</label>
+            <select
+              formControlName="bloodType"
+              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+            >
+              <option value="">Select</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+            </select>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">Blood Type *</label>
-              <select
-                formControlName="bloodType"
+              <label class="block text-sm font-medium text-gray-700 mb-1">Units *</label>
+              <input
+                formControlName="unitsCollected"
+                type="number"
+                min="1"
                 class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
-              >
-                <option value="">Select</option>
-                <option value="A+">A+</option>
-                <option value="A-">A-</option>
-                <option value="B+">B+</option>
-                <option value="B-">B-</option>
-                <option value="O+">O+</option>
-                <option value="O-">O-</option>
-                <option value="AB+">AB+</option>
-                <option value="AB-">AB-</option>
-              </select>
+              />
             </div>
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-1">Date *</label>
@@ -72,6 +74,23 @@
               />
             </div>
           </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Location</label>
+            <input
+              formControlName="location"
+              type="text"
+              placeholder="Main Donation Center"
+              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Notes</label>
+            <textarea
+              formControlName="notes"
+              rows="3"
+              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+            ></textarea>
+          </div>
         </div>
         <div class="flex flex-col-reverse sm:flex-row justify-end gap-3 mt-6">
           <button
@@ -83,10 +102,10 @@
           </button>
           <button
             type="submit"
-            [disabled]="donorForm.invalid"
+            [disabled]="donationForm.invalid"
             class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 disabled:opacity-50"
           >
-            Add Donor
+            Save Donation
           </button>
         </div>
       </form>

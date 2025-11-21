@@ -133,16 +133,16 @@
         </li>
         <li>
           <button
-            (click)="setActiveSection('donors')"
-            [class.bg-red-50]="activeSection === 'donors'"
-            [class.text-red-600]="activeSection === 'donors'"
-            [class.font-semibold]="activeSection === 'donors'"
+            (click)="setActiveSection('donations')"
+            [class.bg-red-50]="activeSection === 'donations'"
+            [class.text-red-600]="activeSection === 'donations'"
+            [class.font-semibold]="activeSection === 'donations'"
             class="flex items-center gap-3 w-full px-4 py-3 rounded-lg hover:bg-gray-100 transition-colors"
           >
             <span
               class="w-6 h-6 flex items-center justify-center"
-              [class.text-red-600]="activeSection === 'donors'"
-              [class.text-gray-600]="activeSection !== 'donors'"
+              [class.text-red-600]="activeSection === 'donations'"
+              [class.text-gray-600]="activeSection !== 'donations'"
             >
               <svg
                 fill="currentColor"
@@ -163,7 +163,7 @@
                 </g>
               </svg>
             </span>
-            <span *ngIf="!sidebarCollapsed">Donors</span>
+            <span *ngIf="!sidebarCollapsed">Donations</span>
           </button>
         </li>
         <li>
@@ -376,22 +376,25 @@
       <app-inventory
         *ngIf="activeSection === 'inventory'"
         [refreshToken]="inventoryRefreshToken"
+        [organizationId]="organizationId"
         (statsChange)="onInventoryStatsChange($event)"
       ></app-inventory>
 
       <!-- Donors Section -->
-      <app-donors
-        *ngIf="activeSection === 'donors'"
+      <app-donations 
+        *ngIf="activeSection === 'donations'"
         [refreshToken]="donorRefreshToken"
-        (addDonor)="openNewDonor()"
+        [organizationId]="organizationId"
+        (addDonation)="openNewDonation()"
         (statsChange)="onDonorStatsChange($event)"
         (inventoryUpdated)="onDonorInventoryUpdated()"
-      ></app-donors>
+      ></app-donations>
 
       <!-- Requests Section -->
       <app-requests
         *ngIf="activeSection === 'requests'"
         [refreshToken]="requestRefreshToken"
+        [organizationId]="organizationId"
         (addRequest)="openNewRequest()"
         (statsChange)="onRequestStatsChange($event)"
         (deliveriesChange)="onRequestDeliveriesChange()"
@@ -401,14 +404,15 @@
       <app-deliveries
         *ngIf="activeSection === 'deliveries'"
         [refreshToken]="deliveryRefreshToken"
+        [organizationId]="organizationId"
         (statsChange)="onDeliveryStatsChange($event)"
       ></app-deliveries>
       
       <!-- Reports Section -->
-      <app-report-modal
+      <app-report
         *ngIf="activeSection === 'reports'"
         [dailyReport]="dailyReport"
-      ></app-report-modal>
+      ></app-report>
     </main>
   </div>
 </div>
@@ -421,9 +425,9 @@
   (save)="saveRequest()"
 ></app-request-modal>
 
-<app-donor-modal
-  [show]="showDonorModal"
-  [donorForm]="donorForm"
+<app-donation-modal
+  [show]="showDonationModal"
+  [donationForm]="donationForm"
   (close)="closeModals()"
-  (save)="saveDonor()"
-></app-donor-modal>
+  (save)="saveDonation()"
+></app-donation-modal>

@@ -6,6 +6,7 @@ export type AlertSeverity = 'info' | 'warning' | 'critical';
 
 export interface Alert {
   id: string;
+  organizationId: string;
   type: AlertType;
   severity: AlertSeverity;
   title: string;
