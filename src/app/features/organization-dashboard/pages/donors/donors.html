@@ -41,7 +41,7 @@
           </tr>
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
-          <tr *ngFor="let donor of todayDonors" class="hover:bg-gray-50">
+          <tr *ngFor="let donor of donors" class="hover:bg-gray-50">
             <td class="px-3 sm:px-6 py-4">
               <div class="text-sm font-medium text-gray-900">{{ donor.name }}</div>
               <div class="text-xs sm:text-sm text-gray-500">{{ donor.phone }}</div>
@@ -67,14 +67,14 @@
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
               <button
                 *ngIf="donor.status === 'scheduled'"
-                (click)="onMarkComplete(donor)"
+                (click)="onMarkCompleteClicked(donor)"
                 class="text-green-600 hover:text-green-900"
               >
                 Mark Complete
               </button>
             </td>
           </tr>
-          <tr *ngIf="todayDonors.length === 0">
+          <tr *ngIf="donors.length === 0">
             <td colspan="5" class="px-6 py-4 text-center text-sm text-gray-500">
               No donors scheduled for today
             </td>

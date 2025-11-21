@@ -138,29 +138,17 @@
               {{ formatDate(request.requestedDate) }}
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-              <div class="flex gap-2">
-                <button
-                  *ngIf="request.status === 'pending'"
-                  (click)="onUpdateStatus(request, 'approved')"
-                  class="text-green-600 hover:text-green-900"
-                >
-                  Approve
-                </button>
-                <button
-                  *ngIf="request.status === 'approved'"
-                  (click)="onUpdateStatus(request, 'in_transit')"
-                  class="text-blue-600 hover:text-blue-900"
-                >
-                  Ship
-                </button>
-                <button
-                  *ngIf="request.status === 'in_transit'"
-                  (click)="onUpdateStatus(request, 'completed')"
-                  class="text-purple-600 hover:text-purple-900"
-                >
-                  Complete
-                </button>
-              </div>
+              <select
+                [ngModel]="request.status"
+                (ngModelChange)="onUpdateStatus(request, $event)"
+                class="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 text-sm bg-white"
+              >
+                <option value="pending">Pending</option>
+                <option value="approved">Approved</option>
+                <option value="in_transit">In Transit</option>
+                <option value="completed">Completed</option>
+                <option value="rejected">Rejected</option>
+              </select>
             </td>
           </tr>
           <tr *ngIf="filteredRequests.length === 0">

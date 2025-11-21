@@ -1,15 +1,15 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Alert } from '../../../../admin/models/blood-bank.models';
+import { Alert } from '../../../../core/models/Alert.model';
 
 @Component({
-  selector: 'app-overview-section',
+  selector: 'app-overview',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './overview-section.html',
-  styleUrls: ['./overview-section.css']
+  templateUrl: './overview.html',
+  styleUrls: ['./overview.css']
 })
-export class OverviewSectionComponent {
+export class OverviewComponent {
   @Input() totalAvailableUnits = 0;
   @Input() unitsExpiringSoon = 0;
   @Input() activeRequests = 0;

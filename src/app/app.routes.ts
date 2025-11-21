@@ -7,8 +7,8 @@ import { About } from './features/about/about';
 import { BloodBankList } from './features/find-blood/blood-bank-list/blood-bank-list';
 import { Login } from './features/login/login';
 import { ForgetPassword } from './features/forget-password/forget-password';
-import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard';
 import { OrganizationDashboardComponent } from './features/organization-dashboard/organization-dashboard';
+import { AdminDashboardComponent } from './features/admin/admin-dashboard/admin-dashboard';
 
 export const routes: Routes = [
   { path: '', component: Home },
