@@ -1,50 +1,117 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
+import { Validators } from '@angular/forms';
+import { AppForm } from '../../shared/form/form';
 
 @Component({
-  selector: 'app-register-org',
+  selector: 'register-org',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [AppForm],
   templateUrl: './register-org.html',
-  styleUrl: './register-org.css',
+  styleUrls: ['./register-org.css'],
 })
-export class RegisterOrg implements OnInit {
-  orgForm!: FormGroup;
+export class RegisterOrg {
+  orgFields = [
+    {
+      name: 'orgName',
+      label: 'Organization Name',
+      type: 'text',
+      validators: [Validators.required],
+      errors: [{ type: 'required', msg: 'Required' }],
+    },
+    {
+      name: 'email',
+      label: 'Email',
+      type: 'email',
+      validators: [Validators.required, Validators.email],
+      errors: [
+        { type: 'required', msg: 'Email required' },
+        { type: 'email', msg: 'Invalid email' },
+      ],
+    },
+    {
+      name: 'password',
+      label: 'Password',
+      type: 'password',
+      validators: [Validators.required, Validators.minLength(6)],
+      errors: [
+        { type: 'required', msg: 'Password required' },
+        { type: 'minlength', msg: 'Min 6 chars' },
+      ],
+      successMessage: 'Valid password',
+    },
+    {
+      name: 'confirmPassword',
+      label: 'Confirm Password',
+      type: 'password',
+      validators: [Validators.required],
+      errors: [
+        { type: 'required', msg: 'Please confirm password' },
+        { type: 'passwordMismatch', msg: 'Passwords do not match' },
+      ],
+      successMessage: 'Passwords match',
+    },
+    {
+      name: 'phone',
+      label: 'Phone Number',
+      type: 'text',
+      validators: [Validators.required],
+      errors: [{ type: 'required', msg: 'Phone required' }],
+    },
+    {
+      name: 'governorate',
+      label: 'Governorate',
+      type: 'select',
+      placeholder: 'Select Governorate',
+      options: [
+        'Cairo',
+        'Giza',
+        'Alexandria',
+        'Dakahlia',
+        'Red Sea',
+        'Beheira',
+        'Fayoum',
+        'Gharbia',
+        'Ismailia',
+        'Menofia',
+        'Minya',
+        'Qaliubiya',
+        'New Valley',
+        'Suez',
+        'Aswan',
+        'Assiut',
+        'Beni Suef',
+        'Port Said',
+        'Damietta',
+        'Sharkia',
+        'South Sinai',
+        'Kafr El Sheikh',
+        'Matrouh',
+        'Luxor',
+        'Qena',
+        'North Sinai',
+        'Sohag',
+      ],
+      validators: [Validators.required],
+      errors: [{ type: 'required', msg: 'Governorate is required' }],
+    },
+    {
+      name: 'district',
+      label: 'District',
+      type: 'text',
+      validators: [Validators.required],
+      errors: [{ type: 'required', msg: 'District is required' }],
+    },
 
-  constructor(private fb: FormBuilder) {}
+    {
+      name: 'address',
+      label: 'Address',
+      type: 'textarea',
+      validators: [Validators.required],
+      errors: [{ type: 'required', msg: 'Required' }],
+    },
+  ];
 
-  ngOnInit(): void {
-    this.orgForm = this.fb.group(
-      {
-        orgName: ['', Validators.required],
-        password: ['', [Validators.required, Validators.minLength(6)]],
-        confirmPassword: ['', Validators.required],
-        address: ['', Validators.required],
-        headName: ['', Validators.required],
-        phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
-      },
-      { validators: this.passwordMatchValidator }
-    );
-  }
-  passwordMatchValidator(formGroup: FormGroup) {
-    const password = formGroup.get('password')?.value;
-    const confirmPassword = formGroup.get('confirmPassword')?.value;
-
-    if (password !== confirmPassword) {
-      formGroup.get('confirmPassword')?.setErrors({ passwordMismatch: true });
-    } else {
-      formGroup.get('confirmPassword')?.setErrors(null);
-    }
-  }
-
-  onSubmit() {
-    if (this.orgForm.valid) {
-      console.log('Org Data:', this.orgForm.value);
-      // Here you can send data to the server.
-    } else {
-      this.orgForm.markAllAsTouched();
-      console.log('Form is invalid');
-    }
+  onSubmit(val: any) {
+    console.log('ORGANIZATION:', val);
   }
 }
