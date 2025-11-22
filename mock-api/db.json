@@ -776,5 +776,91 @@
       "location": "Alexandria Outreach",
       "notes": "Awaiting lab screening"
     }
+  ],
+  "blogs": [
+    {
+      "id": "BLOG-001",
+      "title": "How Often Can You Donate Blood? A Complete Guide",
+      "date": "2025-02-24",
+      "category": "Uncategorized",
+      "image": "images/blog-1.jpg",
+      "excerpt": "You can donate whole blood every 56 days, but the frequency varies depending on the type of donation. This guide explains the recommended intervals and why your body needs time to replenish essential components after each donation.",
+      "content": "Full article content about blood donation frequency..."
+    },
+    {
+      "id": "BLOG-002",
+      "title": "Who Can Donate Blood? Eligibility & Requirements Explained",
+      "date": "2025-02-24",
+      "category": "Uncategorized",
+      "image": "images/blog-2.jpg",
+      "excerpt": "Blood donation has clear health and safety requirements. This article walks you through age limits, minimum weight, medical conditions, travel restrictions, and everything you need to know before your first donation.",
+      "content": "Full article content about blood donation eligibility..."
+    },
+    {
+      "id": "BLOG-003",
+      "title": "Can Donating Blood Improve Your Health? Here's What Science Says",
+      "date": "2025-02-24",
+      "category": "Health & Benefits",
+      "image": "images/blog-3.jpg",
+      "excerpt": "Studies show that blood donation may support heart health, reduce excess iron levels, and enhance overall wellness. Here's what researchers have discovered about the long-term benefits for regular donors.",
+      "content": "Full article content about health benefits of blood donation..."
+    },
+    {
+      "id": "BLOG-004",
+      "title": "Understanding Blood Types: A Comprehensive Guide",
+      "date": "2025-02-20",
+      "category": "Education",
+      "image": "images/blog-1.jpg",
+      "excerpt": "Learn about the different blood types, compatibility, and why certain blood types are more in demand than others. Understanding your blood type is crucial for effective donation.",
+      "content": "Full article content about blood types..."
+    },
+    {
+      "id": "BLOG-005",
+      "title": "The Blood Donation Process: What to Expect",
+      "date": "2025-02-18",
+      "category": "Education",
+      "image": "images/blog-2.jpg",
+      "excerpt": "First-time donor? This step-by-step guide explains everything you need to know about the donation process, from registration to post-donation care.",
+      "content": "Full article content about the donation process..."
+    },
+    {
+      "id": "BLOG-006",
+      "title": "Emergency Blood Shortages: How You Can Help",
+      "date": "2025-02-15",
+      "category": "News",
+      "image": "images/blog-3.jpg",
+      "excerpt": "During emergency situations, blood banks face critical shortages. Discover how regular donations can help maintain adequate blood supply and save lives during crises.",
+      "content": "Full article content about emergency blood shortages..."
+    }
+  ],
+  "bloodBanks": [
+    {
+      "id": "BANK-001",
+      "name": "Cairo Central Blood Bank",
+      "address": "Cairo Hospital Building, Nasr City, Cairo, Egypt",
+      "contact": "02-123456789",
+      "branches": 3
+    },
+    {
+      "id": "BANK-002",
+      "name": "Alexandria Regional Blood Center",
+      "address": "Medical Complex, Corniche Road, Alexandria, Egypt",
+      "contact": "03-987654321",
+      "branches": 2
+    },
+    {
+      "id": "BANK-003",
+      "name": "Giza Blood Donation Center",
+      "address": "Giza Hospital Building, Pyramids Road, Giza, Egypt",
+      "contact": "02-555555555",
+      "branches": 1
+    },
+    {
+      "id": "BANK-004",
+      "name": "New Cairo Blood Bank",
+      "address": "Fifth Settlement, New Cairo, Cairo, Egypt",
+      "contact": "02-111111111",
+      "branches": 1
+    }
   ]
 }

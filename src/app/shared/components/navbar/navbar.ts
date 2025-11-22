@@ -15,6 +15,7 @@ export class Navbar {
   links = [
     { text: 'Home', route: '/' },
     { text: 'About', route: '/about' },
+    { text: 'Latest Blog', route: '/latest-blog' },
     { text: 'Find Blood', route: '/find-blood' },
     {
       text: 'Register now',

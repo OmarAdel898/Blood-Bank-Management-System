@@ -9,6 +9,7 @@ import { Login } from './features/login/login';
 import { ForgetPassword } from './features/forget-password/forget-password';
 import { OrganizationDashboardComponent } from './features/organization-dashboard/organization-dashboard';
 import { AdminDashboardComponent } from './features/admin/admin-dashboard/admin-dashboard';
+import { LatestBlog } from './features/latest-blog/latest-blog';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -18,6 +19,7 @@ export const routes: Routes = [
   { path: 'find-blood', component: BloodBankList },
   { path: 'login', component: Login },
   { path: 'forget-password', component: ForgetPassword },
+  { path: 'latest-blog', component: LatestBlog },
   { path: 'admin', component: AdminDashboardComponent },
   { path: 'organization-dashboard', component: OrganizationDashboardComponent },
   { path: '**', redirectTo: '' },
