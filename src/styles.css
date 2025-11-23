@@ -35,6 +35,10 @@
   .form-gradient {
     @apply bg-gradient-to-r from-red-800 to-red-600;
   }
+  .form-gradient-blood-request {
+    @apply bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-200;
+  }
+
   .button-submit {
     @apply px-6 py-2 text-lg font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 disabled:opacity-50 transition duration-150 flex items-center;
   }

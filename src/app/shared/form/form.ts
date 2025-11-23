@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter, signal } from '@angular/core';
+import { NgClass, CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import {
   ReactiveFormsModule,
@@ -11,7 +12,7 @@ import {
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [NgClass, CommonModule, ReactiveFormsModule],
   templateUrl: './form.html',
   styleUrls: ['./form.css'],
 })
@@ -19,6 +20,8 @@ export class AppForm {
   @Input() title: string = '';
 
   @Input() fields: any[] = [];
+
+  @Input() gradientType: 'red' | 'yellow' = 'red';
 
   @Output() submitForm = new EventEmitter<any>();
 
