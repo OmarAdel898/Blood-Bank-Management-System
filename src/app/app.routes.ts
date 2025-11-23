@@ -11,6 +11,7 @@ import { ForgetPassword } from './features/forget-password/forget-password';
 import { OrganizationDashboardComponent } from './features/organization-dashboard/organization-dashboard';
 import { AdminDashboardComponent } from './features/admin/admin-dashboard/admin-dashboard';
 import { LatestBlog } from './features/latest-blog/latest-blog';
+import { BloodRequest } from './features/blood-request/blood-request';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -24,6 +25,7 @@ export const routes: Routes = [
   { path: 'latest-blog', component: LatestBlog },
   { path: 'admin', component: AdminDashboardComponent },
   { path: 'organization-dashboard', component: OrganizationDashboardComponent },
+  { path: 'blood-request', component: BloodRequest },
   { path: '**', redirectTo: '' },
 ];
 
