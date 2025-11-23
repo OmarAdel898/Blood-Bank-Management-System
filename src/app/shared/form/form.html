@@ -52,6 +52,11 @@
 				<input type="file" (change)="onFileChange($event, field.name)"
 					class="col-span-5 sm:col-span-2 tailwind-input placeholder-gray-400" />
 				}
+				<!-- Date -->
+				@if (field.type === 'date') {
+				<input type="date" [formControlName]="field.name" class="col-span-5 sm:col-span-2 tailwind-input" />
+				}
+
 
 				<!-- Checkbox -->
 				@if(field.type === 'checkbox') {
