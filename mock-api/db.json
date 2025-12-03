@@ -393,6 +393,22 @@
       "status": "pending",
       "organizationId": "ORG-001",
       "requestNumber": "REQ-1763730298139"
+    },
+    {
+      "id": "e5b7",
+      "hospitalName": "Delta Hospital",
+      "patientName": "Maha Ali",
+      "bloodType": "B-",
+      "unitsNeeded": 1,
+      "priority": "medium",
+      "location": {
+        "address": "Cairo"
+      },
+      "requestedDate": "2025-12-03T19:25:22.855Z",
+      "requestedTime": "21:25",
+      "status": "pending",
+      "organizationId": "ORG-001",
+      "requestNumber": "REQ-1764789922855"
     }
   ],
   "deliveries": [
@@ -672,6 +688,7 @@
       "id": "USR-001",
       "name": "Admin User",
       "email": "admin@bloodbank.com",
+      "password": "admin1234",
       "role": "admin",
       "organizationId": "ORG-001"
     },
@@ -679,13 +696,15 @@
       "id": "USR-002",
       "name": "Lab Technician",
       "email": "lab@bloodbank.com",
-      "role": "lab_technician",
+      "password": "lab1234",
+      "role": "lab",
       "organizationId": "ORG-001"
     },
     {
       "id": "USR-003",
       "name": "Coordinator",
       "email": "coordinator@bloodbank.com",
+      "password": "123456",
       "role": "coordinator",
       "organizationId": "ORG-001"
     },
@@ -693,6 +712,7 @@
       "id": "USR-004",
       "name": "View Only User",
       "email": "viewer@bloodbank.com",
+      "password": "123456",
       "role": "viewer",
       "organizationId": "ORG-001"
     }
